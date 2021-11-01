@@ -1,5 +1,6 @@
 package com.BlogApp.Blog.data.model;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,7 +20,8 @@ public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
+    @NotNull
     private String username;
     @Column(nullable = false)
     private String password;
