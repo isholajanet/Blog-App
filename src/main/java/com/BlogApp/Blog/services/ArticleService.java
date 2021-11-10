@@ -4,13 +4,16 @@ import com.BlogApp.Blog.data.dto.ArticleDto;
 import com.BlogApp.Blog.data.model.Article;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
-public interface PostService {
-    void savePost(Article article);
+public interface ArticleService {
+    Article savePost(Article article);
     Article findById(Long id);
     void delete(Long id);
     void delete(Article article);
-    Article updateArticle(ArticleDto article);
-
+    Article updateArticle(Long id, ArticleDto article);
+    List<Article> findAll();
 
 }
