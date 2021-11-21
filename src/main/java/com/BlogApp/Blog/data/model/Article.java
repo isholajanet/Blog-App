@@ -9,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -29,10 +30,11 @@ public class Article {
     private String imageUrl;
     @UpdateTimestamp
     private LocalDate dateCreated;
+
     @ManyToOne
     private User user;
-    @OneToMany
-    private List<Comment> comments;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Comment> comments = new ArrayList<>();
 
     public Article(String title, String description, String imageUrl) {
         this.title = title;

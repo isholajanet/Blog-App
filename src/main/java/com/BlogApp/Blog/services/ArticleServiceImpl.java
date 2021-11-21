@@ -1,10 +1,13 @@
 package com.BlogApp.Blog.services;
 
 import com.BlogApp.Blog.data.dto.ArticleDto;
+import com.BlogApp.Blog.data.dto.CommentDto;
 import com.BlogApp.Blog.data.model.Article;
+import com.BlogApp.Blog.data.model.Comment;
 import com.BlogApp.Blog.data.model.User;
 import com.BlogApp.Blog.data.repository.ArticleRepository;
 import com.BlogApp.Blog.services.mapper.ArticleMapper;
+import com.BlogApp.Blog.services.mapper.CommentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +22,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
     ArticleMapper articleMapper;
+
+    @Autowired
+    CommentService commentService;
 
 
     @Override
@@ -69,4 +75,6 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Article> findAll() {
         return articleRepository.findAll();
     }
+
+
 }

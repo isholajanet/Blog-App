@@ -22,4 +22,6 @@ public class Comment {
     private String text;
     @UpdateTimestamp
     private LocalDate date;
+    @ManyToOne
+    private Article article;
 }

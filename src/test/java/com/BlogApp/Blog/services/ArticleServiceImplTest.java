@@ -77,7 +77,6 @@ class ArticleServiceImplTest {
         article.setId(1L);
         when(articleService.savePost(article)).thenReturn(article);
 
-//        when(articleService.findById(1L)).thenReturn(Optional.of(article));
         articleService.findById(1L);
 
         articleService.delete(article);
@@ -93,6 +92,7 @@ class ArticleServiceImplTest {
         article.setImageUrl("https://www.image.org");
 
         when(articleService.savePost(article)).thenReturn(article);
+        articleService.savePost(article);
 
         ArticleDto articleDto = new ArticleDto();
         articleDto.setTitle("Me and you");
@@ -103,10 +103,10 @@ class ArticleServiceImplTest {
             article.setDescription(articleDto.getDescription());
             return null;
         });
-//        when(articleService.findById(1L)).thenReturn(Optional.of(article));
-//        when(articleService.updateArticle(1L, articleDto)).thenReturn(article);
-            articleService.updateArticle(1L,articleDto);
-        verify(articleRepository, times(1)).save(article);
+        when(articleRepository.findById(1L)).thenReturn(Optional.of(article));
+        articleService.updateArticle(1L, articleDto);
+
+        verify(articleRepository, times(2)).save(article);
         verify(articleRepository,times(1)).findById(1L);
     }
 }

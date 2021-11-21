@@ -1,6 +1,7 @@
 package com.BlogApp.Blog.services;
 
 import com.BlogApp.Blog.data.dto.ArticleDto;
+import com.BlogApp.Blog.data.dto.CommentDto;
 import com.BlogApp.Blog.data.model.Article;
 import org.springframework.stereotype.Service;
 
